@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<body>
+    <h1>Admin Panel</h1>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+    <table id="customers">
+        <tr>
+            <th>Filename</th>
+            <th>Action</th>
+            <th>Action</th>
+        </tr>
+        {% for file in files %}
+        <tr>
+            <td>{{ file }}</td>
+            <td><a href="{{ url_for('download', filename=file) }}">Download</a></td>
+            <td><a href="{{ url_for('show', filename=file) }}">Open</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
